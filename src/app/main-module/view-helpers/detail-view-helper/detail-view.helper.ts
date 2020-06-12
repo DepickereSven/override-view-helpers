@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
-import { distinctUntilChanged, filter, map } from "rxjs/operators";
+import { distinctUntilChanged, filter, map, tap } from "rxjs/operators";
 
 @Injectable()
 export class DetailViewHelper implements OnDestroy {
@@ -11,6 +11,7 @@ export class DetailViewHelper implements OnDestroy {
 
     getId(): Observable<number> {
         return this.activatedRoute.params.pipe(
+            tap(v => console.log(v)),
             filter(params => params && params.orderId),
             map(params => params.orderId),
             map(orderId => parseInt(orderId, 10)),
