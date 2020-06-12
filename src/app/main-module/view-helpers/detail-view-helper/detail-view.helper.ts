@@ -24,6 +24,7 @@ export class DetailViewHelper implements IDetailViewHelperService, OnDestroy {
     }
 
     getId(): Observable<number> {
+        console.log(this.activatedRoute);
         return this.activatedRoute.params.pipe(
             tap(v => console.log(v)),
             filter(params => params && params.orderId),

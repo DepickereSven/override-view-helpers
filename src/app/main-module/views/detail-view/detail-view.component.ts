@@ -3,7 +3,7 @@ import {
     DETAIL_VIEW_HELPER_SERVICE,
     IDetailViewHelperService
 } from '../../view-helpers/detail-view-helper/detail-view.helper';
-import { BehaviorSubject, combineLatest, interval, Observable } from "rxjs";
+import { BehaviorSubject, combineLatest, interval, Observable, of } from "rxjs";
 import { map } from "rxjs/operators";
 import { takeUntilDestroy } from "ngx-reactivetoolkit";
 
@@ -13,6 +13,8 @@ import { takeUntilDestroy } from "ngx-reactivetoolkit";
     template: `
         <h1>Id: {{ id$ | async }}</h1>
         <h2>Update Value {{ updateValue$ | async }}</h2>
+        
+        <a routerLink="/main-view">Go Home</a>
     `,
 })
 export class DetailViewComponent implements OnInit, OnDestroy {
@@ -30,7 +32,7 @@ export class DetailViewComponent implements OnInit, OnDestroy {
         console.log('vh');
         this.id$ = this.vh.getId();
 
-        combineLatest([this.id$, interval(1000)]).pipe(
+        combineLatest([of(25), interval(1000)]).pipe(
             map(([id, interval]) => this.vh.updateId(id)),
             takeUntilDestroy(this)
         ).subscribe(
