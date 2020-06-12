@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
             Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
         </p>
-        <a [routerLink]="['/main-view']">See more details</a>
+        <a routerLink="/main-view">See more details</a>
     `
 })
 export class HomeViewComponent {
