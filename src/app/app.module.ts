@@ -14,7 +14,7 @@ import { HomeViewComponent } from "./views/home-view/home-view.component";
     imports: [
         BrowserModule,
         AppRoutingModule,
-        MainModule
+        MainModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]
